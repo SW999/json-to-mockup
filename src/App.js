@@ -1,28 +1,247 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/header';
+import Footer from './components/footer';
+import Section from './components/section';
+import Sidebar from './components/sidebar';
+import ErrorStub from './components/error-stub';
 
-class App extends Component {
+const mockUps = [
+  {
+    id: 1,
+    title: 'Top menu',
+    style: {
+      backgroundImage: 'linear-gradient(to right bottom, #d4f2ff, #00A5E5, #00A5E5, #d4f2ff)',
+      padding: '1rem 2rem'
+    },
+    screen: 'menu1.jpg',
+    children: [
+      {
+        id: '1.1',
+        title: 'Menu wrapper',
+        style: {
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          height: '40px',
+          margin: 0,
+          padding: 0,
+          borderBottom: '1px solid #888',
+          textAlign: 'center',
+          backgroundColor: '#444'
+        },
+        children: [
+          {
+            id: '1.1.1',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: 'background-color .5s ease-in'
+            },
+            styleHover: {
+              backgroundColor: '#005f5f'
+            },
+            text: 'Home'
+          },
+          {
+            id: '1.1.2',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#444',
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              backgroundColor: '#fff',
+              cursor: 'default'
+            },
+            text: 'Tutorials'
+          },
+          {
+            id: '1.1.3',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: '.3s background-color'
+            },
+            styleHover: {
+              backgroundColor: '#005f5f'
+            },
+            text: 'About'
+          },
+          {
+            id: '1.1.4',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: '.3s background-color'
+            },
+            styleHover: {
+              backgroundColor: '#005f5f'
+            },
+            text: 'Newsletters'
+          },
+          {
+            id: '1.1.5',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: '.3s background-color'
+            },
+            styleHover: {
+              backgroundColor: '#005f5f'
+            },
+            text: 'Contacts'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Menu design #2',
+    style: {
+      backgroundColor: '#F0F0F0',
+      padding: '2rem 3rem'
+    },
+    screen: 'menu2.jpg',
+    children: [
+      {
+        id: '2.1',
+        title: 'Menu wrapper',
+        style: {
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          height: '40px',
+          margin: 0,
+          padding: 0,
+          boxShadow: '2px 2px 6px #888',
+          borderRadius: '3px',
+          textAlign: 'center',
+          backgroundImage: 'linear-gradient(to right bottom, #d4f2ff, #00A5E5, #00A5E5, #d4f2ff)'
+        },
+        children: [
+          {
+            id: '2.1.1',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Roboto', Arial, Helvetica, sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: 'background-color .4s ease-in'
+            },
+            styleHover: {
+              backgroundColor: '#444'
+            },
+            text: 'Home'
+          },
+          {
+            id: '2.1.2',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#444',
+              fontFamily: "'Roboto', Arial, Helvetica, sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              backgroundColor: '#fff',
+              cursor: 'default'
+            },
+            text: 'Tutorials'
+          },
+          {
+            id: '2.1.3',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Roboto', Arial, Helvetica, sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: 'background-color .4s ease-in'
+            },
+            styleHover: {
+              backgroundColor: '#444'
+            },
+            text: 'About'
+          },
+          {
+            id: '2.1.4',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Roboto', Arial, Helvetica, sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: 'background-color .4s ease-in'
+            },
+            styleHover: {
+              backgroundColor: '#444'
+            },
+            text: 'Newsletters'
+          },
+          {
+            id: '2.1.5',
+            title: 'Menu item',
+            style: {
+              width: '120px',
+              color: '#fff',
+              fontFamily: "'Roboto', Arial, Helvetica, sans-serif",
+              fontSize: '1.2em',
+              lineHeight: '40px',
+              cursor: 'pointer',
+              transition: 'background-color .4s ease-in'
+            },
+            styleHover: {
+              backgroundColor: '#444'
+            },
+            text: 'Contacts'
+          }
+        ]
+      }
+    ]
+  },
+];
+
+export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <Header/>
+        <div className="container">
+          <ErrorStub key='app'>
+            <Section data={mockUps[1]}/>
+            <Sidebar items={mockUps}/>
+          </ErrorStub>
+        </div>
+        <Footer/>
+      </>
     );
   }
 }
-
-export default App;
