@@ -27,4 +27,36 @@
     border-radius: 4px;
     box-shadow: .8rem .8rem 1.6rem rgba(#000, .4);
   }
+
+  .preview {
+    &-items {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+    }
+
+    &-item-wrapper {
+      cursor: pointer;
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-top: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        width: 50%;
+        padding-left: 1rem;
+      }
+
+      @media (min-width: 1200px) {
+        width: 25%;
+        padding-left: 2rem;
+      }
+    }
+  }
 }

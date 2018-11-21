@@ -236,7 +236,7 @@ export default class App extends Component {
         <Header/>
         <div className="container">
           <ErrorStub key='app'>
-            <Section data={mockUps[1]}/>
+            <Section data={mockUps}/>
             <Sidebar items={mockUps}/>
           </ErrorStub>
         </div>
