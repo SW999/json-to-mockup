@@ -40,13 +40,65 @@
     }
 
     &-item-wrapper {
+      position: relative;
+      border-radius: 3px;
       cursor: pointer;
 
       img {
         display: block;
         max-width: 100%;
         height: auto;
-        margin-top: 1rem;
+      }
+
+      .caption {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        z-index: 10;
+
+        &:before,
+        &:after {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 50%;
+          padding: 1rem;
+          overflow: hidden;
+          transition: all .4s ease-in;
+        }
+
+        &:before {
+          content: attr(data-title);
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          top: -50%;
+          font-size: 2.8rem;
+          font-weight: 600;
+          color: #000;
+          background: rgba(#fff, .7);
+        }
+
+        &:after {
+          content: attr(data-description);
+          bottom: -50%;
+          font-size: 1.5rem;
+          line-height: 1.6;
+          font-weight: 400;
+          color: #fff;
+          background: rgba(#222, .9);
+        }
+      }
+
+      .caption:hover::before {
+        top: 0;
+      }
+
+      .caption:hover::after {
+        bottom: 0;
       }
 
       @media (min-width: 768px) {

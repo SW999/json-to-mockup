@@ -46,8 +46,11 @@ class Section extends Component {
         <div className="preview-items">
           {data.map((mockup, index) => (
             <div key={mockup.id} className="preview-item-wrapper" onClick={() => selectMockUpAction(index)}>
-              <h3>{mockup.title}</h3>
-              <img src={`./assets/img/${mockup.screen}`} alt={`${mockup.title} preview`}/>
+              <div className="caption"
+                 data-title={mockup.title}
+                 data-description={mockup.description}>
+                <img src={`./assets/img/${mockup.screen}`} alt={`${mockup.title} preview`}/>
+              </div>
             </div>
           ))}
         </div>

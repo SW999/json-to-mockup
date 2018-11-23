@@ -8,6 +8,7 @@ export default class ApiService {
         padding: '1rem 2rem'
       },
       screen: 'menu1.jpg',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id sapien condimentum, sagittis erat rhoncus, bibendum nisi.',
       children: [
         {
           id: '1.1',
@@ -118,6 +119,7 @@ export default class ApiService {
         padding: '2rem 3rem'
       },
       screen: 'menu2.jpg',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id sapien condimentum, sagittis erat rhoncus, bibendum nisi.',
       children: [
         {
           id: '2.1',
