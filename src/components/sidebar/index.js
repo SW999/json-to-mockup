@@ -1,12 +1,6 @@
 import React from 'react';
 import Navigation from '../navigation';
 
-const Sidebar = ({ items }) => {
-  return (
-    <aside className="sidebar">
-      <Navigation items={items}/>
-    </aside>
-  );
-};
+const Sidebar = () => <aside className="sidebar"><Navigation /></aside>;
 
 export default Sidebar;

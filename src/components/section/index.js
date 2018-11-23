@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import ChildComponent from '../child-component';
+import { connect } from 'react-redux';
 import './section.scss';
 
-export default class Section extends Component {
-  static defaultProps = {
-    data: null
-  };
-
+class Section extends Component {
   state = {
-    selectedMockUpIndex: null
+    selectedMockUpIndex: this.props.selectedMockUpIndex
   };
 
   getChildren = (childrenArr) => {
@@ -33,8 +30,7 @@ export default class Section extends Component {
           key={id}
           style={style}
         >
-          {this.getChildren(children)
-          }
+          {this.getChildren(children)}
         </div>
       </>
     );
@@ -55,12 +51,12 @@ export default class Section extends Component {
       <>
         <h1>Available Mock-ups</h1>
         <div className="preview-items">
-        {this.props.data.map((mockup, index) => (
-          <div key={mockup.id} className="preview-item-wrapper" onClick={this.onSelectMockup.bind(null, index)}>
-            <h3>{mockup.title}</h3>
-            <img src={`./assets/img/${mockup.screen}`} alt={`${mockup.title} preview`}/>
-          </div>
-        ))}
+          {this.props.data.map((mockup, index) => (
+            <div key={mockup.id} className="preview-item-wrapper" onClick={() => this.onSelectMockup(index)}>
+              <h3>{mockup.title}</h3>
+              <img src={`./assets/img/${mockup.screen}`} alt={`${mockup.title} preview`}/>
+            </div>
+          ))}
         </div>
       </>
     );
@@ -76,3 +72,12 @@ export default class Section extends Component {
     );
   }
 }
+
+const mapStateToProps = store => {
+  return {
+    selectedMockUpIndex: store.selectedMockUpIndex,
+    data: store.data
+  }
+};
+
+export default connect(mapStateToProps)(Section);
