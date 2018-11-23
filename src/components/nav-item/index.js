@@ -6,6 +6,7 @@ const NavItem = ({ id, title, isActive, onActive }) => {
 
     onActive(id);
   };
+  const text = id !== 'id0' ? `Mock-up #${id}` : title;
 
   return (
     <li>
@@ -13,7 +14,7 @@ const NavItem = ({ id, title, isActive, onActive }) => {
         title={title}
         className={isActive ? 'link-item current' : 'link-item'}
         onClick={onItemClick}
-      >Mock-up #{id}</span>
+      >{text}</span>
     </li>
   );
 };

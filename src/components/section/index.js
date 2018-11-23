@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import ChildComponent from '../child-component';
+import { selectMockUp } from '../../actions/data-actions';
 import { connect } from 'react-redux';
 import './section.scss';
 
 class Section extends Component {
-  state = {
-    selectedMockUpIndex: this.props.selectedMockUpIndex
-  };
-
   getChildren = (childrenArr) => {
     return childrenArr.map(child => {
       return (
@@ -36,14 +33,10 @@ class Section extends Component {
     );
   };
 
-  onSelectMockup = (index) => {
-    this.setState({
-      selectedMockUpIndex: index
-    });
-  };
-
   showPreviewList = () => {
-    if (this.props.data === null) {
+    const { data, selectMockUpAction } = this.props;
+
+    if (data === null) {
       return <h1>There are not yet available Mock-ups</h1>
     }
 
@@ -51,8 +44,8 @@ class Section extends Component {
       <>
         <h1>Available Mock-ups</h1>
         <div className="preview-items">
-          {this.props.data.map((mockup, index) => (
-            <div key={mockup.id} className="preview-item-wrapper" onClick={() => this.onSelectMockup(index)}>
+          {data.map((mockup, index) => (
+            <div key={mockup.id} className="preview-item-wrapper" onClick={() => selectMockUpAction(index)}>
               <h3>{mockup.title}</h3>
               <img src={`./assets/img/${mockup.screen}`} alt={`${mockup.title} preview`}/>
             </div>
@@ -63,11 +56,11 @@ class Section extends Component {
   };
 
   render() {
-    const index = this.state.selectedMockUpIndex;
+    const { data, selectedMockUpIndex: index } = this.props;
 
     return (
       <section className="section">
-        {index !== null ? this.showSelectedMockUp(this.props.data[index]) : this.showPreviewList()}
+        {index !== null ? this.showSelectedMockUp(data[index]) : this.showPreviewList()}
       </section>
     );
   }
@@ -75,9 +68,15 @@ class Section extends Component {
 
 const mapStateToProps = store => {
   return {
-    selectedMockUpIndex: store.selectedMockUpIndex,
-    data: store.data
+    data: store.data,
+    selectedMockUpIndex: store.selectedMockUpIndex
   }
 };
 
-export default connect(mapStateToProps)(Section);
+const mapDispatchToProps = dispatch => {
+  return {
+    selectMockUpAction: index => dispatch(selectMockUp(index))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Section);
