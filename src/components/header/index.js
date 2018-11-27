@@ -1,5 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const Header = () => <header><h1>JSON to Mock-ups</h1></header>;
+class Header extends Component {
+  render() {
+    const { selectedMockUpIndex } = this.props;
+    const style = selectedMockUpIndex !== null ? { height: 0, padding: '0 1.6rem' } : null;
 
-export default Header;
+    return <header style={style}><h1>JSON to Mock-ups</h1></header>
+  }
+}
+
+const mapStateToProps = store => {
+  return {
+    selectedMockUpIndex: store.selectedMockUpIndex
+  }
+};
+
+export default connect(mapStateToProps)(Header);

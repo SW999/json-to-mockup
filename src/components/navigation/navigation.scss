@@ -1,4 +1,6 @@
 nav {
+  position: relative;
+
   ul {
     width: 100%;
     margin: 0;
@@ -26,7 +28,7 @@ nav {
     }
   }
 
-  li + li {
+  li:not(:first-child) {
     border-top: thin solid #4a4a4a;
   }
 
@@ -35,10 +37,10 @@ nav {
       float: left;
       border: thin solid #4a4a4a;
       border-radius: 4px;
-    }
 
-    li + li {
-      margin-left: 1rem;
+      &:not(:first-child) {
+        margin-left: 1rem;
+      }
     }
   }
 

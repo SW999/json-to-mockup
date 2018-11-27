@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChildComponent from '../child-component';
+import Loader from '../loader';
 import { selectMockUp } from '../../actions/data-actions';
 import { connect } from 'react-redux';
 import './section.scss';
@@ -29,6 +30,7 @@ class Section extends Component {
         >
           {this.getChildren(children)}
         </div>
+        <div className="grid-12-columns"/>
       </>
     );
   };
@@ -37,7 +39,7 @@ class Section extends Component {
     const { data, selectMockUpAction } = this.props;
 
     if (data === null) {
-      return <h1>There are not yet available Mock-ups</h1>
+      return <><h1>Loading...</h1><Loader /></>
     }
 
     return (
