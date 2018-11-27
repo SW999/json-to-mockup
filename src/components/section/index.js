@@ -3,7 +3,7 @@ import ChildComponent from '../child-component';
 import Loader from '../loader';
 import { selectMockUp } from '../../actions/data-actions';
 import { connect } from 'react-redux';
-import './section.scss';
+import styles from './Section.module.scss';
 
 class Section extends Component {
   getChildren = (childrenArr) => {
@@ -24,13 +24,13 @@ class Section extends Component {
       <>
         <h1>{title}</h1>
         < div
-          className="wrapper"
+          className={styles.wrapper}
           key={id}
           style={style}
         >
           {this.getChildren(children)}
         </div>
-        <div className="grid-12-columns"/>
+        <div className={styles.grid12Columns}/>
       </>
     );
   };
@@ -45,10 +45,10 @@ class Section extends Component {
     return (
       <>
         <h1>Available Mock-ups</h1>
-        <div className="preview-items">
+        <div className={styles.previewItems}>
           {data.map((mockup, index) => (
-            <div key={mockup.id} className="preview-item-wrapper" onClick={() => selectMockUpAction(index)}>
-              <div className="caption"
+            <div key={mockup.id} className={styles.previewItemWrapper} onClick={() => selectMockUpAction(index)}>
+              <div className={styles.caption}
                  data-title={mockup.title}
                  data-description={mockup.description}>
                 <img src={`./assets/img/${mockup.screen}`} alt={`${mockup.title} preview`}/>
@@ -64,7 +64,7 @@ class Section extends Component {
     const { data, selectedMockUpIndex: index } = this.props;
 
     return (
-      <section className="section">
+      <section className={styles.section}>
         {index !== null ? this.showSelectedMockUp(data[index]) : this.showPreviewList()}
       </section>
     );

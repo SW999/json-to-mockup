@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './NavItem.module.scss';
 
 const NavItem = ({ id, title, isActive, onActive }) => {
   const onItemClick = (e) => {
@@ -12,7 +13,7 @@ const NavItem = ({ id, title, isActive, onActive }) => {
     <li>
       <span
         title={title}
-        className={isActive ? 'link-item current' : 'link-item'}
+        className={isActive ? `${style.linkItem} ${style.current}` : `${style.linkItem}`}
         onClick={onItemClick}
       >{text}</span>
     </li>

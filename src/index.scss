@@ -61,7 +61,7 @@ header, footer {
   flex: none;
 }
 
-.section, .sidebar {
+.sidebar {
   padding: 1.6rem;
 }
 
@@ -75,21 +75,11 @@ header, footer {
     height: 10rem;
     border-bottom: thin solid #F4F3F0;
   }
-
-  .section {
-    order: 2;
-    flex: 1 0 auto;
-  }
 }
 
 @media (min-width: 768px) {
   .container {
     flex: 1 0 auto;
-  }
-
-  .section {
-    order: 2;
-    flex-grow: 1;
   }
 
   .sidebar {
