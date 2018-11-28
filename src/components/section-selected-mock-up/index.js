@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SectionSelectedMockUp = ({ data, styles, children}) => {
+const SectionSelectedMockUp = ({ data, styles, children, showGrid = false}) => {
   const { id, title, style } = data;
 
   return (
@@ -13,7 +13,7 @@ const SectionSelectedMockUp = ({ data, styles, children}) => {
       >
         {children}
       </div>
-      <div className={styles.grid12Columns}/>
+      {showGrid ? <div className={styles.grid12Columns}/> : null}
     </>
   );
 };

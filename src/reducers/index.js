@@ -1,6 +1,7 @@
 export const initialState = {
   data: null,
-  selectedMockUpIndex: null
+  selectedMockUpIndex: null,
+  gridView: false
 };
 
 export function reducer(state = initialState, action) {
@@ -9,7 +10,10 @@ export function reducer(state = initialState, action) {
       return { ...state, data: action.payload };
 
     case 'SELECT_MOCKUP':
-      return { ...state, selectedMockUpIndex: action.payload };
+      return { ...state, selectedMockUpIndex: action.payload, gridView: false };
+
+    case 'TOGGLE_GRID':
+      return { ...state, gridView: !action.gridView };
 
     default:
       return state

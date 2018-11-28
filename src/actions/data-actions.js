@@ -11,3 +11,9 @@ export function selectMockUp(selectedMockUpIndex) {
     payload: selectedMockUpIndex
   }
 }
+
+export function toggleGridView() {
+  return {
+    type: 'TOGGLE_GRID'
+  }
+}
