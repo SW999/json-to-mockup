@@ -4,7 +4,7 @@ import SectionPreviewList from '../section-preview-list';
 import SectionSelectedMockUp from '../section-selected-mock-up';
 import styles from './Section.module.scss';
 
-const Section = ({ data, selected: index, onSelect }) => {
+const Section = ({ data, selected: index, onSelect, isGridVisible }) => {
   const getChildren = (childrenArr) => {
     return childrenArr.map(child => {
       return (
@@ -21,7 +21,7 @@ const Section = ({ data, selected: index, onSelect }) => {
   return (
     <section className={styles.section}>
       {index !== null
-        ? <SectionSelectedMockUp data={data[index]} styles={styles} children={getChildren(data[index].children)}/>
+        ? <SectionSelectedMockUp data={data[index]} styles={styles} children={getChildren(data[index].children)} showGrid={isGridVisible}/>
         : <SectionPreviewList data={data} onSelect={onSelect} styles={styles}/>
       }
     </section>

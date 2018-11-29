@@ -6,7 +6,7 @@ import Section from '../components/section/index';
 import Sidebar from '../components/sidebar/index';
 import ErrorStub from '../components/error-stub/index';
 import ApiService from '../services/api-service';
-import { setData, selectMockUp } from '../actions/data-actions';
+import { setData, selectMockUp, toggleGridView } from '../actions/data-actions';
 
 class App extends Component {
   apiService = new ApiService();
@@ -19,18 +19,18 @@ class App extends Component {
   }
 
   render() {
-    const { data, selectedMockUpIndex: selected, selectMockUpAction } = this.props;
+    const { data, selectedMockUpIndex: selected, selectMockUpAction, gridView, toggleGridAction } = this.props;
 
     return (
       <>
         <Header selected={selected}/>
         <div className="container">
           <ErrorStub key='app'>
-            <Section data={data} selected={selected} onSelect={selectMockUpAction}/>
+            <Section data={data} selected={selected} onSelect={selectMockUpAction} isGridVisible={gridView}/>
             <Sidebar/>
           </ErrorStub>
         </div>
-        <Footer selected={selected}/>
+        <Footer selected={selected} onToggleGrid={toggleGridAction} isGridVisible={gridView}/>
       </>
     );
   }
@@ -39,14 +39,16 @@ class App extends Component {
 const mapStateToProps = store => {
   return {
     data: store.data,
-    selectedMockUpIndex: store.selectedMockUpIndex
+    selectedMockUpIndex: store.selectedMockUpIndex,
+    gridView: store.gridView
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setDataAction: data => dispatch(setData(data)),
-    selectMockUpAction: index => dispatch(selectMockUp(index))
+    selectMockUpAction: index => dispatch(selectMockUp(index)),
+    toggleGridAction: _ => dispatch(toggleGridView())
   }
 };
 

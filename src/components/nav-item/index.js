@@ -2,7 +2,7 @@ import React from 'react';
 import style from './NavItem.module.scss';
 
 const NavItem = ({ id, title, isActive, onActive }) => {
-  const onItemClick = (e) => {
+  const onItemClick = e => {
     e.preventDefault();
 
     onActive(id);

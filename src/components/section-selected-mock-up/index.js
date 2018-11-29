@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SectionSelectedMockUp = ({ data, styles, children, showGrid = false}) => {
+const SectionSelectedMockUp = ({ data, styles, children, showGrid}) => {
   const { id, title, style } = data;
 
   return (

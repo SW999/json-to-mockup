@@ -13,7 +13,7 @@ export function reducer(state = initialState, action) {
       return { ...state, selectedMockUpIndex: action.payload, gridView: false };
 
     case 'TOGGLE_GRID':
-      return { ...state, gridView: !action.gridView };
+      return { ...state, gridView: !state.gridView };
 
     default:
       return state
