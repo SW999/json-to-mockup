@@ -9,13 +9,20 @@ const ControlButton = ({ name, active, url, title, style, onToggle }) => {
 
 const ControlPanel = () => {
   const [active, changeActive] = useState('view');
+  const toggleButton = (name) => {
+    if (name === active && name === 'view') return;
+    changeActive(name === active ? 'view' : name);
+  };
+  const controlButtonsArr = [
+    { name: 'view', url: './assets/img/icon-view.svg', title: 'View mode' },
+    { name: "grid", url: './assets/img/icon-grid.svg', title: 'Toggle grid' },
+    { name: "code", url: './assets/img/icon-code.svg', title: 'Show styles' },
+    { name: "tune", url: './assets/img/icon-tune.svg', title: 'Tune' }
+  ];
 
   return (
     <div className={style.controlPanel}>
-      <ControlButton style={style} name="view" active={active} url="./assets/img/icon-view.svg" title="View mode" onToggle={changeActive}/>
-      <ControlButton style={style} name="grid" active={active} url="./assets/img/icon-grid.svg" title="Toggle grid" onToggle={changeActive}/>
-      <ControlButton style={style} name="code" active={active} url="./assets/img/icon-code.svg" title="Show styles" onToggle={changeActive}/>
-      <ControlButton style={style} name="tune" active={active} url="./assets/img/icon-tune.svg" title="Tune" onToggle={changeActive}/>
+      {controlButtonsArr.map(i => <ControlButton key={i.name} style={style} name={i.name} active={active} url={i.url} title={i.title} onToggle={toggleButton}/>)}
     </div>
   );
 };
