@@ -31,7 +31,7 @@ export default class ControlPanel extends Component {
     });
   };
 
-  getButtons = _ => {
+  getButtons() {
     const controlButtonsArr = [
       { name: 'view', url: './assets/img/icon-view.svg', title: 'View mode' },
       { name: 'grid', url: './assets/img/icon-grid.svg', title: 'Toggle grid' },
@@ -40,7 +40,7 @@ export default class ControlPanel extends Component {
     ];
 
     return controlButtonsArr.map(i => <ControlButton key={i.name} style={style} name={i.name} active={this.state.active} url={i.url} title={i.title} onToggle={this.toggleButton}/>);
-  };
+  }
 
   render() {
     return (
