@@ -1,11 +1,10 @@
 import React from 'react';
 
 const SectionSelectedMockUp = ({ data, styles, children, showGrid}) => {
-  const { id, title, style } = data;
+  const { id, style } = data;
 
   return (
     <>
-      <h1>{title}</h1>
       < div
         className={styles.wrapper}
         key={id}

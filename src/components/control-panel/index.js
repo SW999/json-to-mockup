@@ -20,10 +20,12 @@ export default class ControlPanel extends Component {
 
   toggleButton = name => {
     const { active } = this.state;
-    if (name === 'view' && active === 'view') {
+//TODO: temporary solution
+    if ((name === 'view' && active === 'view') || name === 'back') {
+      this.props.controlAction(name);
       return;
     } else if (name === 'grid' || active === 'grid') {
-      this.props.toggleGrid();
+      this.props.controlAction(name);
     }
 
     this.setState(state => {
@@ -33,13 +35,14 @@ export default class ControlPanel extends Component {
 
   getButtons() {
     const controlButtonsArr = [
+      { name: 'back', url: './assets/img/icon-back.svg', title: 'Back to mock-ups' },
       { name: 'view', url: './assets/img/icon-view.svg', title: 'View mode' },
       { name: 'grid', url: './assets/img/icon-grid.svg', title: 'Toggle grid' },
       { name: 'code', url: './assets/img/icon-code.svg', title: 'Show styles' },
       { name: 'tune', url: './assets/img/icon-tune.svg', title: 'Tune' }
     ];
 
-    return controlButtonsArr.map(i => <ControlButton key={i.name} style={style} name={i.name} active={this.state.active} url={i.url} title={i.title} onToggle={this.toggleButton}/>);
+    return controlButtonsArr.map(i => <ControlButton key={i.name} style={style} name={i.name} active={this.state.active} url={i.url} title={i.title} onAction={this.toggleButton}/>);
   }
 
   render() {

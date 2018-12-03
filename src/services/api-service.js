@@ -5,7 +5,7 @@ export default class ApiService {
       title: 'Top menu',
       style: {
         backgroundImage: 'linear-gradient(to right bottom, #d4f2ff, #00A5E5, #00A5E5, #d4f2ff)',
-        padding: '1rem 2rem'
+        padding: '1rem 1.6rem'
       },
       screen: 'menu1.jpg',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id sapien condimentum, sagittis erat rhoncus, bibendum nisi.',
@@ -116,7 +116,7 @@ export default class ApiService {
       title: 'Menu design #2',
       style: {
         backgroundColor: '#F0F0F0',
-        padding: '2rem 3rem'
+        padding: '2rem 3.2rem'
       },
       screen: 'menu2.jpg',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id sapien condimentum, sagittis erat rhoncus, bibendum nisi.',
