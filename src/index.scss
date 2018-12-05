@@ -66,6 +66,13 @@ header, footer {
 
 .sidebar {
   padding: 1.6rem;
+  background-color: #fff;
+  transition: all .6s ease;
+
+  &.project-info {
+    color: #B0B8C5;
+    background-color: #1E2332;
+  }
 }
 
 @media (max-width: 767px) {
