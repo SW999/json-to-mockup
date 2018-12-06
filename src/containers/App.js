@@ -6,7 +6,7 @@ import Section from '../components/section/index';
 import Sidebar from '../components/sidebar/index';
 import ErrorStub from '../components/error-stub/index';
 import ApiService from '../services/api-service';
-import { setData, selectMockUp, toggleGridView } from '../actions/data-actions';
+import * as dataActions from '../actions/data-actions';
 
 class App extends Component {
   apiService = new ApiService();
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   dispatchControlAction = (actionName = '') => {
-    const { selectMockUp, toggleGrid } = this.props;
+    const { selectMockUp, toggleGridView } = this.props;
 
     switch (actionName) {
       case 'back':
@@ -27,7 +27,7 @@ class App extends Component {
         break;
 
       case 'grid':
-        toggleGrid();
+        toggleGridView();
         break;
 
       default:
@@ -54,23 +54,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = store => {
-  return {
-    data: store.data,
-    selectedMockUpIndex: store.selectedMockUpIndex,
-    gridView: store.gridView
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setData: data => dispatch(setData(data)),
-    selectMockUp: index => dispatch(selectMockUp(index)),
-    toggleGrid: _ => dispatch(toggleGridView())
-  }
-};
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  ({ data, selectedMockUpIndex, gridView }) => ({
+    data,
+    selectedMockUpIndex,
+    gridView
+  }),
+  {
+    ...dataActions
+  }
 )(App);
