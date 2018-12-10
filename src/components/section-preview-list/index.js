@@ -11,7 +11,7 @@ const SectionPreviewList = ({ data, onSelect, styles }) => {
       <h1>Available Mock-ups</h1>
       <div className={styles.previewItems}>
         {data.map((mockup, index) => (
-          <div key={mockup.id} className={styles.previewItemWrapper} onClick={() => onSelect(index)}>
+          <div key={mockup.id} className={styles.previewItemWrapper} onPointerDown={() => onSelect(index)}>
             <div className={styles.caption}
                  data-title={mockup.title}
                  data-description={mockup.description}>

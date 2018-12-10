@@ -10,19 +10,11 @@ export default class ChildComponent extends Component {
     })
   };
 
-  static defaultProps = {
-    data: {
-      style: {},
-      styleHover: {},
-      text: null
-    }
-  };
-
   state = {
     innerStyle: this.props.data.style,
   };
 
-  handleMouserEnter = () => {
+  onEnter = () => {
     const { style, styleHover } = this.props.data;
 
     this.setState({
@@ -30,7 +22,7 @@ export default class ChildComponent extends Component {
     });
   };
 
-  handleMouserLeave = () => {
+  onLeave = () => {
     this.setState({
       innerStyle: this.props.data.style
     });
@@ -43,8 +35,8 @@ export default class ChildComponent extends Component {
       <div
         key={id}
         style={this.state.innerStyle}
-        onMouseEnter={this.handleMouserEnter}
-        onMouseLeave={this.handleMouserLeave}
+        onPointerEnter={this.onEnter}
+        onPointerLeave={this.onLeave}
         title={text}
       >
         {text}
