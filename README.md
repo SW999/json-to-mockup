@@ -1,5 +1,5 @@
 ## JSON to Mock-up
-An experiment (naive) on the display of visual layouts saved in JSON format (as in the InVision app).
+An experiment (*naive*) on the display of visual layouts saved in JSON format (as in the InVision app).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
